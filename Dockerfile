@@ -24,4 +24,10 @@ RUN a2dissite 000-default && a2ensite backend.conf
 
 COPY ./php.ini /usr/local/etc/php/
 
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["apache2-foreground"]
